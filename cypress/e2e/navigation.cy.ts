@@ -29,6 +29,12 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+
+      cy.get("nav").contains("Support").click();
+      cy.get("@open").should(
+        "be.always.calledWith",
+        "mailto:support@prolog-app.com?subject=Support Request:"
+      );
     });
 
     it("is collapsible", () => {
