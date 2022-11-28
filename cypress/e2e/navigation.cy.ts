@@ -30,6 +30,11 @@ describe("Sidebar Navigation", () => {
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
 
+      // Get window object to access it methods for stubs
+      cy.window().then((win) => {
+        // alias window.open function so it can be referenced later with '@open'
+        cy.stub(win, "open").as("open");
+      });
       cy.get("nav").contains("Support").click();
       cy.get("@open").should(
         "be.always.calledWith",
