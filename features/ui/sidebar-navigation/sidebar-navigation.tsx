@@ -146,7 +146,9 @@ const LinkList = styled(List)`
 
 const CollapseMenuItem = styled(MenuItemButton)`
   display: none;
-
+  img {
+    transform: ${({ isCollapsed }) => (isCollapsed ? "scale(-1, 1)" : "none")};
+  }
   @media (min-width: ${breakpoint("desktop")}) {
     display: flex;
   }
