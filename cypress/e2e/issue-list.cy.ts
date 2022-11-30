@@ -45,6 +45,7 @@ describe("Issue List", () => {
           cy.wrap($el).contains(issue.name);
           cy.wrap($el).contains(issue.message);
           cy.wrap($el).contains(issue.numEvents);
+          cy.wrap($el).contains(issue.numUsers);
           cy.wrap($el).contains(firstLineOfStackTrace);
         });
     });
