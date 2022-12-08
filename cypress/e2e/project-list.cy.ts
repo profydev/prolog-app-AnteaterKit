@@ -22,7 +22,7 @@ describe("Project List", () => {
 
     it("renders the projects", () => {
       const languageNames = ["React", "Node.js", "Python"];
-      const statusNames = ["Stable", "Warning", "Critical"];
+      const statusNames = ["Critical", "Warning", "Stable"];
 
       // get all project cards
       cy.get("main")
