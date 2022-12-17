@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { color } from "@styles/theme";
+import { breakpoint, color } from "@styles/theme";
 
 const menuItems = [
   { text: "Docs" },
@@ -11,11 +11,22 @@ const menuItems = [
 const footerStyle = css`
   background-color: ${color("gray", 50)};
   align-items: center;
-  display: flex;
-  justify-content: space-between;
-  min-height: 60px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  gap: 24px;
+  display: grid;
+  grid-template-areas: "menu" "logo" "ver";
+
+  @media (min-width: ${breakpoint("desktop")}) {
+    display: flex;
+    justify-content: space-between;
+    min-height: 60px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    gap: 0px;
+  }
 `;
 
 const FooterContainer = styled.div`
@@ -24,24 +35,52 @@ const FooterContainer = styled.div`
 
 const Version = styled.div`
   color: ${color("gray", 400)};
+  grid-area: "ver";
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: ${breakpoint("desktop")}) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 `;
 
 const MenuItem = styled.div`
   color: ${color("gray", 500)};
   font-size: 16px;
   font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: ${breakpoint("desktop")}) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 `;
 
 const MenuWrapper = styled.div`
   display: flex;
   gap: 24px;
   margin-right: 88px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: "menu";
+  @media (min-width: ${breakpoint("desktop")}) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 `;
 const Menu = menuItems.map((item, index) => (
   <MenuItem key={index}>{item.text}</MenuItem>
 ));
 
-const Logo = styled.img``;
+const Logo = styled.img`
+  grid-area: "logo";
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: ${breakpoint("desktop")}) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+`;
 
 export function Footer() {
   return (
