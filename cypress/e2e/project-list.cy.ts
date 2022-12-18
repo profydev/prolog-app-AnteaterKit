@@ -11,6 +11,8 @@ describe("Project List", () => {
     // open projects page
     cy.visit("http://localhost:3000/dashboard");
 
+    cy.get('[data-cy="loader"]').should("exist");
+
     // wait for request to resolve
     cy.wait("@getProjects");
   });
