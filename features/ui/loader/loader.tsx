@@ -13,5 +13,7 @@ const LoadingImage = styled.img`
 `;
 
 export function Loader() {
-  return <LoadingImage src="/icons/loading.svg"></LoadingImage>;
+  return (
+    <LoadingImage data-cy="loader" src="/icons/loading.svg"></LoadingImage>
+  );
 }
