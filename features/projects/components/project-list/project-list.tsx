@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { breakpoint, space } from "@styles/theme";
 import { ProjectCard } from "../project-card";
 import { useProjects } from "../../api/use-projects";
+import { Loader } from "@features/ui/loader";
 
 const List = styled.ul`
   display: grid;
@@ -18,11 +19,21 @@ const List = styled.ul`
   }
 `;
 
+const LoaderWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+`;
+
 export function ProjectList() {
   const { data, isLoading, isError, error } = useProjects();
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <LoaderWrap>
+        <Loader></Loader>;
+      </LoaderWrap>
+    );
   }
 
   if (isError) {
