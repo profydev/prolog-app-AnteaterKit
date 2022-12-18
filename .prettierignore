@@ -1,3 +1,4 @@
 .next
 .vscode
 package-lock.json
+cypress/downloads/downloads.html
