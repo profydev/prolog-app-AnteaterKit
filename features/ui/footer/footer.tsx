@@ -29,13 +29,13 @@ const footerStyle = css`
   }
 `;
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   ${footerStyle}
 `;
 
 const Version = styled.div`
   color: ${color("gray", 400)};
-  grid-area: "ver";
+  grid-area: ver;
   margin-left: auto;
   margin-right: auto;
   @media (min-width: ${breakpoint("desktop")}) {
@@ -62,7 +62,7 @@ const MenuWrapper = styled.div`
   margin-right: 88px;
   margin-left: auto;
   margin-right: auto;
-  grid-area: "menu";
+  grid-area: menu;
   @media (min-width: ${breakpoint("desktop")}) {
     margin-left: 0px;
     margin-right: 0px;
@@ -73,7 +73,7 @@ const Menu = menuItems.map((item, index) => (
 ));
 
 const Logo = styled.img`
-  grid-area: "logo";
+  grid-area: logo;
   margin-left: auto;
   margin-right: auto;
   @media (min-width: ${breakpoint("desktop")}) {
