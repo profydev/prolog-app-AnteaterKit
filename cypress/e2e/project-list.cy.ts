@@ -43,3 +43,43 @@ describe("Project List", () => {
     });
   });
 });
+
+describe("Error load project List", () => {
+  beforeEach(() => {
+    // setup request mock
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+      forceNetworkError: true,
+    }).as("getProjects");
+
+    // open projects page
+    cy.visit("http://localhost:3000/dashboard");
+
+    cy.get('[data-cy="loader"]').should("exist");
+
+    // wait for request to resolve
+    cy.wait("@getProjects");
+
+    cy.wait(8000);
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it("renders error screen", () => {
+      cy.get('[data-cy="error-load"]').should("exist");
+    });
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it("renders error screen", () => {
+      cy.get('[data-cy="error-load"]').should("exist");
+    });
+  });
+});

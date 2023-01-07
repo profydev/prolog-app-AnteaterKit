@@ -3,6 +3,7 @@ import { breakpoint, space } from "@styles/theme";
 import { ProjectCard } from "../project-card";
 import { useProjects } from "../../api/use-projects";
 import { Loader } from "@features/ui/loader";
+import { ProjectsError } from "../projects-error";
 
 const List = styled.ul`
   display: grid;
@@ -26,7 +27,12 @@ const LoaderWrap = styled.div`
 `;
 
 export function ProjectList() {
-  const { data, isLoading, isError, error } = useProjects();
+  const { data, isLoading, isError, error, refetch } = useProjects();
+
+  const reload = () => {
+    console.log("reload");
+    refetch();
+  };
 
   if (isLoading) {
     return (
@@ -38,7 +44,7 @@ export function ProjectList() {
 
   if (isError) {
     console.error(error);
-    return <div>Error: {error.message}</div>;
+    return <ProjectsError reload={reload}></ProjectsError>;
   }
 
   return (
