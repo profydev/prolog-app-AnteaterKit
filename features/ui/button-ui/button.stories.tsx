@@ -15,9 +15,15 @@ const Template: ComponentStory<typeof UIButton> = ({
   size,
   color,
   disabled,
+  iconPosition,
 }) => (
   <div style={{ padding: 50 }}>
-    <UIButton size={size} color={color} disabled={disabled}>
+    <UIButton
+      size={size}
+      color={color}
+      disabled={disabled}
+      iconPosition={iconPosition}
+    >
       Button CTA
     </UIButton>
   </div>

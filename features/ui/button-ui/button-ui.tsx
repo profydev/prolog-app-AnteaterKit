@@ -18,22 +18,26 @@ export enum ButtonColor {
 }
 
 export enum IconPosition {
+  none = "none",
   leading = "leading",
   trailing = "trailing",
-  only = "",
+  only = "only",
 }
 
 export interface UIButtonProps {
   children: React.ReactNode;
   color?: ButtonColor;
   size?: ButtonSize;
-  icon?: React.ReactNode;
+  iconPosition?: IconPosition;
   disabled?: boolean;
 }
 
 const ButtonRoot = styled.button<{ size: ButtonSize }>`
   background: ${color("primary", 600)};
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 9.67px;
   width: fit-content;
   padding: 8px 14px 8px 14px;
   border: 1px solid #7f56d9;
@@ -227,15 +231,26 @@ const ButtonRoot = styled.button<{ size: ButtonSize }>`
   }
 `;
 
+const Icon = styled.div`
+  width: 16px;
+  height: 16px;
+  border: 1.67px solid #ffffff;
+  border-radius: 50%;
+`;
+
 export function UIButton({
   children,
   size = ButtonSize.md,
   color,
   disabled = false,
+  iconPosition = IconPosition.none,
 }: UIButtonProps) {
   return (
     <ButtonRoot size={size} color={color} disabled={disabled}>
-      {children}
+      {iconPosition === IconPosition.leading && <Icon></Icon>}
+      {iconPosition === IconPosition.only && <Icon></Icon>}
+      {iconPosition !== IconPosition.only && children}
+      {iconPosition === IconPosition.trailing && <Icon></Icon>}
     </ButtonRoot>
   );
 }
