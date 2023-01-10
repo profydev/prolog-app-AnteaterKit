@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { UIButton } from ".//button-ui";
-import { size } from "lodash";
 
 export default {
   title: "UI/Button",
@@ -12,9 +11,13 @@ export default {
   },
 } as ComponentMeta<typeof UIButton>;
 
-const Template: ComponentStory<typeof UIButton> = ({ size, color }) => (
+const Template: ComponentStory<typeof UIButton> = ({
+  size,
+  color,
+  disabled,
+}) => (
   <div style={{ padding: 50 }}>
-    <UIButton size={size} color={color}>
+    <UIButton size={size} color={color} disabled={disabled}>
       Button CTA
     </UIButton>
   </div>

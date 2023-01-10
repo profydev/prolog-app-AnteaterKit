@@ -189,6 +189,42 @@ const ButtonRoot = styled.button<{ size: ButtonSize }>`
       }
     }};
   }
+
+  &:disabled {
+    pointer-events: none;
+    ${(props) => {
+      switch (props.color) {
+        case ButtonColor.primary:
+          return css`
+            background: ${color("primary", 200)};
+            border: 1px solid #e9d7fe;
+            box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+          `;
+        case ButtonColor.secondary:
+          return css`
+            background: ${color("primary", 25)};
+            color: ${color("primary", 300)};
+          `;
+        case ButtonColor.empty:
+          return css`
+            color: ${color("gray", 300)};
+          `;
+        case ButtonColor.gray:
+          return css`
+            background: #ffffff;
+            color: ${color("gray", 300)};
+          `;
+        case ButtonColor.emptyGray:
+          return css`
+            color: ${color("gray", 300)};
+          `;
+        case ButtonColor.error:
+          return css`
+            background: ${color("error", 200)};
+          `;
+      }
+    }};
+  }
 `;
 
 export function UIButton({
