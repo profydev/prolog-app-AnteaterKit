@@ -28,6 +28,7 @@ export interface UIButtonProps {
   color?: ButtonColor;
   size?: ButtonSize;
   icon?: React.ReactNode;
+  disabled?: boolean;
 }
 
 const ButtonRoot = styled.button<{ size: ButtonSize }>`
@@ -36,7 +37,6 @@ const ButtonRoot = styled.button<{ size: ButtonSize }>`
   width: fit-content;
   padding: 8px 14px 8px 14px;
   border: 1px solid #7f56d9;
-  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -155,33 +155,36 @@ const ButtonRoot = styled.button<{ size: ButtonSize }>`
       switch (props.color) {
         case ButtonColor.primary:
           return css`
-            background: blue;
+            background: ${color("primary", 600)};
             box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05),
               0px 0px 0px 4px #f4ebff;
           `;
         case ButtonColor.secondary:
           return css`
-            background: ${color("primary", 100)};
+            background: ${color("primary", 50)};
+            box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05),
+              0px 0px 0px 4px #f4ebff;
           `;
         case ButtonColor.empty:
-          return css`
-            background: ${color("primary", 50)};
-            border: none;
-            color: ${color("primary", 700)};
-          `;
+          return css``;
         case ButtonColor.gray:
           return css`
-            background: ${color("gray", 300)};
-            color: ${color("gray", 800)};
+            background: none;
+            color: ${color("gray", 700)};
+            box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05),
+              0px 0px 0px 4px #f2f4f7;
           `;
         case ButtonColor.emptyGray:
           return css`
-            background: ${color("gray", 50)};
+            background: none;
             color: ${color("gray", 500)};
+            box-shadow: none;
           `;
         case ButtonColor.error:
           return css`
-            background: ${color("error", 700)};
+            background: ${color("error", 600)};
+            box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05),
+              0px 0px 0px 4px #fee4e2;
           `;
       }
     }};
@@ -192,9 +195,10 @@ export function UIButton({
   children,
   size = ButtonSize.md,
   color,
+  disabled = false,
 }: UIButtonProps) {
   return (
-    <ButtonRoot size={size} color={color}>
+    <ButtonRoot size={size} color={color} disabled={disabled}>
       {children}
     </ButtonRoot>
   );

@@ -15,7 +15,7 @@ export default {
 const Template: ComponentStory<typeof UIButton> = ({ size, color }) => (
   <div style={{ padding: 50 }}>
     <UIButton size={size} color={color}>
-      Button
+      Button CTA
     </UIButton>
   </div>
 );
