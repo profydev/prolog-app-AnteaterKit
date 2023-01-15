@@ -17,6 +17,7 @@ const Template: ComponentStory<typeof Checkbox> = ({
   checked,
   intermediate,
   label,
+  disabled,
 }) => (
   <div style={{ padding: 50 }}>
     <Checkbox
@@ -24,7 +25,10 @@ const Template: ComponentStory<typeof Checkbox> = ({
       checked={checked}
       intermediate={intermediate}
       label={label}
-    ></Checkbox>
+      disabled={disabled}
+    >
+      {children}
+    </Checkbox>
   </div>
 );
 
