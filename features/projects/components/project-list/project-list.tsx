@@ -4,6 +4,7 @@ import { ProjectCard } from "../project-card";
 import { useProjects } from "../../api/use-projects";
 import { Loader } from "@features/ui/loader";
 import { ProjectsError } from "../projects-error";
+import { Select } from "@features/ui/select";
 
 const List = styled.ul`
   display: grid;

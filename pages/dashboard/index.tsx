@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { PageContainer } from "@features/ui";
 import { ProjectList } from "@features/projects";
+import { Select } from "@features/ui/select";
 
 const Home: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
       info="Overview of your projects sorted by alert level."
     >
       <ProjectList />
+      <Select></Select>
     </PageContainer>
   );
 };
