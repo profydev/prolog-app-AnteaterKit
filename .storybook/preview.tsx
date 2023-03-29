@@ -10,7 +10,6 @@ export const decorators = [
   (Story: StoryType) => (
     <ThemeProvider theme={theme}>
       <NavigationProvider>
-        <div id="portal" />
         <GlobalStyle />
         <Story />
       </NavigationProvider>
