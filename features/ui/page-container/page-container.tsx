@@ -59,6 +59,7 @@ export function PageContainer({ children, title, info }: PageContainerProps) {
   const documentTitle = `ProLog - ${title}`;
   return (
     <Container>
+      <div id="portal" />
       <Head>
         <title>{documentTitle}</title>
         <meta name="description" content="Error monitoring" />
